@@ -60,9 +60,26 @@ body {
 }
 .tweet {
   margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  width: 600px;
+  background-color: #fff;
 }
 .tweet h2 {
+  font-family: 'Roboto', sans-serif;
   color: silver;
 }
+.user {
+  font-weight: 500;
+}
+.date {
+  font-weight: 300;
+}
 .tweet p {
+  padding-top: 4px;
+  font-family: 'Droid Serif', serif;
+}
+button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
