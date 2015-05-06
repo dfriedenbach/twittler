@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="twittler.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
   </head>
   <body>
     <button class="update-tweets">Check for new tweets.</button>
+    <div class="tweet template">
+      <h2><span class="author"></span><span class="date"></span></h2>
+      <p class="message">This should not display! #template #bug</p>
+    </div>
     <script>
 
       $(document).ready(function(){
