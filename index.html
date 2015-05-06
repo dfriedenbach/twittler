@@ -7,19 +7,20 @@
   </head>
   <body>
     <button class="update-tweets">Check for new tweets.</button>
+    <button class="view-home" hidden>View all tweets.</button>
     <section class="timeline home view">
     </section>
     <div class="tweet template">
-      <h2><span class="author"></span> - <span class="date"></span></h2>
+      <h2><a class="user" href="#"></a> - <span class="date"></span></h2>
       <p class="message">This should not display! #template #bug</p>
     </div>
     <script>
       
       $(document).ready(function(){
         for(user in streams.users) {
-          var $user = $('<section class="timeline"></section>');
-          $user.addClass(user);
-          $user.insertAfter('.home');
+          var $userTimeline = $('<section class="timeline"></section>');
+          $userTimeline.addClass(user);
+          $userTimeline.insertAfter('.home');
         }
         
         var populateTweets = function() {
@@ -29,7 +30,16 @@
             var tweet = streams.home[index];
             var $tweet = $('.template').filter('.tweet').clone();
             $tweet.removeClass('template');
-            $tweet.find('.author').text('@' + tweet.user);
+            var $user = $tweet.find('.user');
+            $user.text('@' + tweet.user);
+            $user.data('user', tweet.user);
+            $user.attr('href', '#' + tweet.user);
+            $user.on('click', function(event) {
+              var user = $(this).data('user');
+              $('.view').removeClass('view');
+              $('.' + user).addClass('view');
+              $('.view-home').show();
+            });
             $tweet.find('.date').text(tweet.created_at);
             $tweet.children('.message').text(tweet.message);
             $tweet.prependTo($('.home'));
@@ -41,6 +51,12 @@
         
         $('.update-tweets').on('click', function() {
           populateTweets();
+        });
+        
+        $('.view-home').on('click', function() {
+          $('.view').removeClass('view');
+          $('.home').addClass('view');
+          $(this).hide();
         });
       });
 
