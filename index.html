@@ -18,7 +18,7 @@
             var tweet = streams.home[index];
             var $tweet = $('<div class="tweet"></div>');
             $tweet.text('@' + tweet.user + ': ' + tweet.message);
-            $tweet.appendTo($body);
+            $tweet.insertAfter($('.update-tweets'));
             index -= 1;
           }
         };
