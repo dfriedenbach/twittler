@@ -7,16 +7,20 @@
   </head>
   <body>
     <button class="update-tweets">Check for new tweets.</button>
-    <section class="timeline">
+    <section class="timeline home view">
     </section>
     <div class="tweet template">
       <h2><span class="author"></span> - <span class="date"></span></h2>
       <p class="message">This should not display! #template #bug</p>
     </div>
     <script>
-
+      
       $(document).ready(function(){
-        var $body = $('body');
+        for(user in streams.users) {
+          var $user = $('<section class="timeline"></section>');
+          $user.addClass(user);
+          $user.insertAfter('.home');
+        }
         
         var populateTweets = function() {
           var index = streams.home.length - 1;
@@ -28,7 +32,8 @@
             $tweet.find('.author').text('@' + tweet.user);
             $tweet.find('.date').text(tweet.created_at);
             $tweet.children('.message').text(tweet.message);
-            $tweet.prependTo($('.timeline'));
+            $tweet.prependTo($('.home'));
+            $tweet.clone().prependTo($('.' + tweet.user));
             index -= 1;
           }
         };

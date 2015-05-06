@@ -46,8 +46,17 @@ table {
   border-spacing: 0;
 }
 /* End of CSS Reset */
+body {
+  background-color: #def;
+}
 .template {
   display: none;
+}
+.timeline {
+  display: none;
+}
+.view {
+  display: block;
 }
 .tweet {
   margin-top: 10px;
