@@ -7,6 +7,8 @@
   </head>
   <body>
     <button class="update-tweets">Check for new tweets.</button>
+    <section class="timeline">
+    </section>
     <div class="tweet template">
       <h2><span class="author"></span> - <span class="date"></span></h2>
       <p class="message">This should not display! #template #bug</p>
@@ -26,7 +28,7 @@
             $tweet.find('.author').text('@' + tweet.user);
             $tweet.find('.date').text(tweet.created_at);
             $tweet.children('.message').text(tweet.message);
-            $tweet.insertAfter($('.update-tweets'));
+            $tweet.prependTo($('.timeline'));
             index -= 1;
           }
         };
