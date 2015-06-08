@@ -29,9 +29,7 @@
         }
         
         var populateTweets = function() {
-          var index = streams.home.length - 1;
-          var preloaded = $('.tweet').length;
-          while(index >= preloaded){
+          for(var index = $('.tweet').length; index < streams.home.length; index++) {
             var tweet = streams.home[index];
             var $tweet = $('.template').filter('.tweet').clone();
             $tweet.removeClass('template');
@@ -49,7 +47,6 @@
             $tweet.children('.message').text(tweet.message);
             $tweet.prependTo($('.home'));
             $tweet.clone().prependTo($('.' + tweet.user));
-            index -= 1;
           }
         };
         populateTweets();
